@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>App.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #e8bf6a;}
+.s4 { color: #bababa;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+App.js</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">React from </span><span class="s2">'react'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">{ BrowserRouter as Router</span><span class="s0">, </span><span class="s1">Route</span><span class="s0">, </span><span class="s1">Routes } from </span><span class="s2">'react-router-dom'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">Register from </span><span class="s2">'./components/Register'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">Login from </span><span class="s2">'./components/Login'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">Profile from </span><span class="s2">'./components/Profile'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">EventPage from </span><span class="s2">'./components/EventPage'</span><span class="s0">;</span>
+<span class="s0">const </span><span class="s1">App = () =&gt; {</span>
+    <span class="s0">return </span><span class="s1">(</span>
+        <span class="s3">&lt;Router&gt;</span>
+            <span class="s3">&lt;Routes&gt;</span>
+                <span class="s3">&lt;Route </span><span class="s4">path</span><span class="s2">=&quot;/&quot; </span><span class="s4">element</span><span class="s2">=</span><span class="s1">{</span><span class="s3">&lt;Login /&gt;</span><span class="s1">} </span><span class="s3">/&gt;</span>
+                <span class="s3">&lt;Route </span><span class="s4">path</span><span class="s2">=&quot;/register&quot; </span><span class="s4">element</span><span class="s2">=</span><span class="s1">{</span><span class="s3">&lt;Register /&gt;</span><span class="s1">} </span><span class="s3">/&gt;</span>
+                <span class="s3">&lt;Route </span><span class="s4">path</span><span class="s2">=&quot;/profile&quot; </span><span class="s4">element</span><span class="s2">=</span><span class="s1">{</span><span class="s3">&lt;Profile /&gt;</span><span class="s1">} </span><span class="s3">/&gt;</span>
+                <span class="s3">&lt;Route </span><span class="s4">path</span><span class="s2">=&quot;/event/:id&quot; </span><span class="s4">element</span><span class="s2">=</span><span class="s1">{</span><span class="s3">&lt;EventPage /&gt;</span><span class="s1">} </span><span class="s3">/&gt;</span>
+            <span class="s3">&lt;/Routes&gt;</span>
+        <span class="s3">&lt;/Router&gt;</span>
+    <span class="s1">)</span><span class="s0">;</span>
+<span class="s1">}</span><span class="s0">;</span>
+
+<span class="s0">export default </span><span class="s1">App</span><span class="s0">;</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>reportWebVitals.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+reportWebVitals.js</font>
+</center></td></tr></table>
+<pre><span class="s0">const </span><span class="s1">reportWebVitals = onPerfEntry =&gt; {</span>
+  <span class="s0">if </span><span class="s1">(onPerfEntry &amp;&amp; onPerfEntry </span><span class="s0">instanceof </span><span class="s1">Function) {</span>
+    <span class="s0">import</span><span class="s1">(</span><span class="s2">'web-vitals'</span><span class="s1">).then(({ getCLS</span><span class="s0">, </span><span class="s1">getFID</span><span class="s0">, </span><span class="s1">getFCP</span><span class="s0">, </span><span class="s1">getLCP</span><span class="s0">, </span><span class="s1">getTTFB }) =&gt; {</span>
+      <span class="s1">getCLS(onPerfEntry)</span><span class="s0">;</span>
+      <span class="s1">getFID(onPerfEntry)</span><span class="s0">;</span>
+      <span class="s1">getFCP(onPerfEntry)</span><span class="s0">;</span>
+      <span class="s1">getLCP(onPerfEntry)</span><span class="s0">;</span>
+      <span class="s1">getTTFB(onPerfEntry)</span><span class="s0">;</span>
+    <span class="s1">})</span><span class="s0">;</span>
+  <span class="s1">}</span>
+<span class="s1">}</span><span class="s0">;</span>
+
+<span class="s0">export default </span><span class="s1">reportWebVitals</span><span class="s0">;</span>
+</pre>
+</body>
+</html>

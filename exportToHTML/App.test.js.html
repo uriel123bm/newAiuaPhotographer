@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>App.test.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #e8bf6a;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+App.test.js</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">{ render</span><span class="s0">, </span><span class="s1">screen } from </span><span class="s2">'@testing-library/react'</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">App from </span><span class="s2">'./App'</span><span class="s0">;</span>
+
+<span class="s1">test(</span><span class="s2">'renders learn react link'</span><span class="s0">, </span><span class="s1">() =&gt; {</span>
+  <span class="s1">render(</span><span class="s3">&lt;App /&gt;</span><span class="s1">)</span><span class="s0">;</span>
+  <span class="s0">const </span><span class="s1">linkElement = screen.getByText(</span><span class="s4">/learn react/i</span><span class="s1">)</span><span class="s0">;</span>
+  <span class="s1">expect(linkElement).toBeInTheDocument()</span><span class="s0">;</span>
+<span class="s1">})</span><span class="s0">;</span>
+</pre>
+</body>
+</html>

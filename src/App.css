@@ -11,7 +11,6 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-
 }
 
 .App-logo {
@@ -49,7 +48,6 @@
 .App-link {
   color: #61dafb;
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -58,3 +56,144 @@
     transform: rotate(360deg);
   }
 }
+.Link-exit {
+  background-color: #57adff;
+  width: 80px;
+  margin-left: 0px;
+  border-radius: 8px;
+  padding: 1px;
+  font-size: small;
+
+  /* הוספת מיקום מוחלט */
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  /* מרכז הכתב */
+  text-align: center; /* מרכז את הכתב באופן אופקי */
+  line-height: 20px; /* גובה השורה מותאם כך שהטקסט יהיה ממורכז אנכית */
+}
+.Name-style{
+  background-color: #6bc1f3;
+  padding: 20px;
+  margin-top: 0px;
+  font-size: medium;
+  text-align: center;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Title-style{
+  margin-left: 0px;
+}
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.Event-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px; /* רוחב התיבה בצד ימין */
+  height: 100%; /* גובה מלא של המסך */
+  background-color: #f4f4f4; /* צבע רקע */
+  border-left: 2px solid #ddd; /* קו גבול בצד שמאל */
+  padding: 20px; /* רווח פנימי */
+  overflow-y: auto; /* גלילה אנכית אם התוכן עולה על גובה התיבה */
+}
+/* עיצוב הכותרת של הרשימה */
+.Event-container h3 {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: #333;
+}
+/* עיצוב הרשימה של האירועים */
+.event-container ul {
+  list-style-type: none; /* מסיר את הנקודות של הרשימה */
+  padding: 0;
+  margin: 0;
+}
+/* עיצוב כל פריט ברשימה */
+.event-container li {
+  margin-bottom: 10px; /* רווח בין פריטי הרשימה */
+}
+/* עיצוב הכפתור של כל אירוע */
+.event-container button {
+  display: block;
+  width:220px;
+  background-color: #6bc1f3;
+  border: none;
+  padding: 10px;
+  font-size: small;
+  color: white;
+  text-align: right; /* טקסט מיושר לשמאל */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* שינוי צבע הכפתור כאשר העכבר מעליו */
+.event-container button:hover {
+  background-color: #4a9ad4;
+}
+
+/* עיצוב חלון המודל */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+}
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.event-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: medium;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  background-color: #ff1a1a;
+}
+
+
+
+

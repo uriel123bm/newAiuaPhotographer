@@ -53,7 +53,7 @@ const Register = () => {
             const user = { firstName, lastName, email, password };
             localStorage.setItem('user', JSON.stringify(user));
             alert('נרשמת בהצלחה!');
-            navigate('/login');
+            navigate('/');
         }
     };
 
@@ -77,9 +77,10 @@ const Register = () => {
                     <input placeholder={"תאשר ת'סיסמה נו"} type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
                 </div>
                 <button type="submit" disabled={!isFormValid}>הרשם</button>
+
                 {error && <p style={{ color: 'red' }}>{error}</p>}
             </form>
-            <p className="Link-Style">נרשמת כבר? <Link to="/login">התחבר</Link></p>
+            <p className="Link-Style">נרשמת כבר? <Link to="/">התחבר</Link></p>
         </div>
     );
 };

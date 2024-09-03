@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [images, setImages] = useState([]);
     const [events, setEvents] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [newEvent, setNewEvent] = useState({
+        name: '',
+        location: '',
+        date: ''
+    });
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -15,20 +22,93 @@ const Profile = () => {
         }
     }, []);
 
-    const handleImageUpload = (e) => {
-        const files = e.target.files;
-        // כאן תוכל להוסיף את הלוגיקה להעלאת תמונות
+    // פונקציה לבדיקת אם כל השדות מלאים
+    const isFormComplete = () => {
+        return newEvent.name && newEvent.location && newEvent.date;
+    };
+
+    // פונקציה לבדוק אם האירוע כבר קיים
+    const isEventDuplicate = () => {
+        return events.some(event =>
+            event.name === newEvent.name &&
+            event.location === newEvent.location &&
+            event.date === newEvent.date
+        );
+    };
+
+    // פונקציה להוסיף אירוע
+    const handleAddEvent = () => {
+        if (isFormComplete() && !isEventDuplicate()) {
+            const updatedEvents = [...events, newEvent].sort((a, b) => new Date(a.date) - new Date(b.date));
+            setEvents(updatedEvents);
+            setNewEvent({ name: '', location: '', date: '' });
+            setShowModal(false);
+        } else if (isEventDuplicate()) {
+            alert('אירוע כזה כבר קיים!');
+        }
+    };
+
+    // פונקציה לעדכון השדות של האירוע
+    const handleInputChange = (e) => {
+        setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
+    };
+
+    // פונקציה למעבר לדף האירוע
+    const handleEventClick = (event) => {
+        navigate(`/event/${event.name}-${event.location}`, { state: { event } });
     };
 
     return (
         <div>
-            <h2>שלום {firstName} {lastName}</h2>
-            <input type="file" multiple onChange={handleImageUpload} />
-            <div>
-                <h3>האירועים שלי</h3>
-                {/* כאן תוכל להציג את האירועים */}
+            <h2 className={"Name-style"}>שלום {firstName} {lastName}</h2>
+            <div className="event-container">
+                <h3 className={"Event-style"}>האירועים שלי</h3>
+                <ul>
+                    {events.map((event, index) => (
+                        <li key={index}>
+                            <button onClick={() => handleEventClick(event)}>
+                                {event.name}, {event.date} ב-{event.location}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
             </div>
-            <p>רוצה לצאת? <Link to="/Login">התנתק</Link></p>
+            <button onClick={() => setShowModal(true)}>הוסף אירוע</button>
+            {showModal && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h3>הוסף אירוע חדש</h3>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="שם האירוע"
+                            value={newEvent.name}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="text"
+                            name="location"
+                            placeholder="מיקום"
+                            value={newEvent.location}
+                            onChange={handleInputChange}
+                        />
+                        <input
+                            type="date"
+                            name="date"
+                            value={newEvent.date}
+                            onChange={handleInputChange}
+                        />
+                        <button
+                            onClick={handleAddEvent}
+                            disabled={!isFormComplete()} // הופך את הכפתור ללא פעיל אם השדות לא מלאים
+                        >
+                            שמור
+                        </button>
+                        <button onClick={() => setShowModal(false)}>סגור</button>
+                    </div>
+                </div>
+            )}
+            <p className={"Link-exit"}>רוצה לצאת? <Link to="/">התנתק</Link></p>
         </div>
     );
 };

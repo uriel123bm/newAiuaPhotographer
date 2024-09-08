@@ -1,7 +1,7 @@
 // Packages.js
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // Import Link here
-import './Packages.css';
+import '../styles/Packages.css';
 
 const PackageCard = ({ title, details, price }) => {
     const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // Import Link here
-import './PurchasePackages.css';
+import '../styles/PurchasePackages.css';
 
 const PurchasePackages = () => {
     const navigate = useNavigate();

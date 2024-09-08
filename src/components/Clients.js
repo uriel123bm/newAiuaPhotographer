@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // Import Link here
-import './Clients.css'; // Import the CSS file for styling
+import '../styles/Clients.css'; // Import the CSS file for styling
 
 const ClientCard = ({ image, name, testimonial }) => {
     return (

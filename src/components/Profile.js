@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [fullName, setFullName] = useState('');
     const [events, setEvents] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [newEvent, setNewEvent] = useState({
@@ -14,11 +13,11 @@ const Profile = () => {
 
     const navigate = useNavigate();
 
+    // טוען את המידע של המשתמש מה-localStorage
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('user'));
         if (storedUser) {
-            setFirstName(storedUser.firstName);
-            setLastName(storedUser.lastName);
+            setFullName(storedUser.fullName); // שינוי ל-fullName
         }
     }, []);
 
@@ -60,7 +59,7 @@ const Profile = () => {
 
     return (
         <div>
-            <h2 className={"Name-style"}>שלום {firstName} {lastName}</h2>
+            <h2 className={"Name-style"}>שלום {fullName}</h2> {/* שימוש ב-fullName */}
             <div className="event-container">
                 <h3 className={"Event-style"}>האירועים שלי</h3>
                 <ul>

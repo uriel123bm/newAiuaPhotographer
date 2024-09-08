@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css'; // Import the CSS file for styling
+import '../styles/Home.css'; // Import the CSS file for styling
 
 const Home = () => {
     return (
@@ -18,7 +18,7 @@ const Home = () => {
 
             {/* Main Content */}
             <div className="hero-section">
-                <h1>Welcome to A.I.U.A Event!</h1>
+                <h1>Welcome to A.I.U.A Events</h1>
 
             </div>
 

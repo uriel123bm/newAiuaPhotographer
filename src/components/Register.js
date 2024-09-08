@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -13,23 +12,18 @@ const Register = () => {
 
     useEffect(() => {
         validateForm();
-    }, [firstName, lastName, email, password, confirmPassword]);
+    }, [fullName, email, password, confirmPassword]);
 
     const validateForm = () => {
-        const firstNameValid = firstName.trim() !== '';
-        const lastNameValid = lastName.trim() !== '';
+        const fullNameValid = fullName.trim() !== '';
         const emailValid = email.includes('@');
         const passwordValid = password.length >= 8 && /[A-Za-z]/.test(password);
         const passwordsMatch = password === confirmPassword;
-        setIsFormValid(firstNameValid && lastNameValid && emailValid && passwordValid && passwordsMatch);
+        setIsFormValid(fullNameValid && emailValid && passwordValid && passwordsMatch);
     };
 
-    const handleFirstNameChange = (e) => {
-        setFirstName(e.target.value);
-    };
-
-    const handleLastNameChange = (e) => {
-        setLastName(e.target.value);
+    const handleFullNameChange = (e) => {
+        setFullName(e.target.value);
     };
 
     const handleEmailChange = (e) => {
@@ -50,10 +44,10 @@ const Register = () => {
         if (storedUser && storedUser.email === email) {
             setError('מייל זה כבר בשימוש, נסה מייל אחר.');
         } else {
-            const user = { firstName, lastName, email, password };
+            const user = { fullName, email, password };
             localStorage.setItem('user', JSON.stringify(user));
             alert('נרשמת בהצלחה!');
-            navigate('/');
+            navigate('/profile'); // ניווט לדף הפרופיל לאחר ההרשמה
         }
     };
 
@@ -62,16 +56,34 @@ const Register = () => {
             <h2>הרשמה</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <input placeholder={"שם פרטי"} type="text" value={firstName} onChange={handleFirstNameChange} />
-                </div>
-                <div>
-                    <input placeholder={"שם משפחה"} type="text" value={lastName} onChange={handleLastNameChange} />
+                    <input placeholder={"שם מלא"} type="text" value={fullName} onChange={handleFullNameChange} />
                 </div>
                 <div>
                     <input placeholder={"אימייל"} type="email" value={email} onChange={handleEmailChange} />
                 </div>
-                <div>
-                    <input placeholder={"סיסמה רצינית"} type="password" value={password} onChange={handlePasswordChange} />
+                <div style={{ position: 'relative' }}>
+                    <input
+                        placeholder={"סיסמה רצינית"}
+                        type="password"
+                        value={password}
+                        onChange={handlePasswordChange}
+                    />
+                    <span
+
+                    //  TODO: להוציא לCSS את העיצוב
+
+                      style={{
+                            position: 'absolute',
+                            top: '5px',
+                            cursor: 'pointer',
+                            color: '#00f',
+                            textDecoration: 'underline',
+                            fontSize: '16px'
+                        }}
+                        title="הסיסמה צריכה להכיל לפחות 8 תווים ולכלול אותיות באנגלית (A-Z)"
+                    >
+                        ?
+                    </span>
                 </div>
                 <div>
                     <input placeholder={"תאשר ת'סיסמה נו"} type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />

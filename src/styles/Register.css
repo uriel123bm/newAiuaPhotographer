@@ -27,21 +27,43 @@ p {
 
 .input-group {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
 }
 
-.input-group input, .input-group select {
-    width: 48%;
+.input-group input {
+    width: calc(100% - 24px);
     padding: 10px;
-    margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
     box-sizing: border-box;
 }
 
-.gender .input-group {
-    justify-content: space-around;
+.password-tooltip-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #888;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.input-group:hover .tooltip {
+    display: block;
 }
 
 .register-button {
@@ -57,4 +79,9 @@ p {
 
 .register-button:hover {
     background-color: #36a420;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
 }

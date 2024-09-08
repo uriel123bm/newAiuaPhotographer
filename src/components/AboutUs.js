@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // Import Link here
-import './AboutUs.css';
+import '../styles/AboutUs.css';
 
 const AboutUs = () => {
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ const AboutUs = () => {
                 <strong>Welcome to A.I.U.A</strong>, a pioneering company in software development and technological solutions. Founded by four college friends, we bring innovation and expertise to create cutting-edge technology experiences.
             </p>
             <p className="about-us-text">
-                One of our flagship products is <strong>A.I.U.A Event</strong>, designed to enhance your event experience for your guests. Our platform offers easy access to your event photos, ensuring that every guest can enjoy the highest quality images. We understand the importance of capturing memorable moments, so we've developed a system that delivers photos directly to your guests without the need for additional software installations.
+                One of our flagship products is <strong>A.I.U.A Event</strong>, designed to enhance your event experience for the guests. Our platform offers easy, personalized  access to your event photos,, ensuring that every guest can enjoy the highest quality images. We understand the importance of capturing and sharing memorable moments, so we've developed a system that delivers photos directly to your guests without the need for additional software installations.
             </p>
             <p className="about-us-text">
                 Using <strong>WhatsApp</strong>, we ensure that accessing photos is simple and accessible for everyone. No need to deal with complicated software – just use the familiar and user-friendly app that everyone knows.

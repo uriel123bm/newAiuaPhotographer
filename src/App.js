@@ -6,6 +6,8 @@ import AboutUs from './components/AboutUs';
 import Packages from './components/Packages';
 import PurchasePackages from './components/PurchasePackages';
 import Clients from './components/Clients';
+import Register from './components/Register'; // ייבוא קומפוננטת ההרשמה
+import Profile from './components/Profile'; // ייבוא קומפוננטת הפרופיל
 
 function App() {
     return (
@@ -17,6 +19,8 @@ function App() {
                 <Route path="/packages" element={<Packages />} />
                 <Route path="/purchase-packages" element={<PurchasePackages />} />
                 <Route path="/clients" element={<Clients />} />
+                <Route path="/register" element={<Register />} /> {/* נתיב להרשמה */}
+                <Route path="/profile" element={<Profile />} /> {/* נתיב לפרופיל */}
             </Routes>
         </Router>
     );

@@ -1,20 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Register from './components/Register';
+import Home from './components/Home';
 import Login from './components/Login';
-import Profile from './components/Profile';
-import EventPage from './components/EventPage';
-const App = () => {
+import AboutUs from './components/AboutUs';
+import Packages from './components/Packages';
+import PurchasePackages from './components/PurchasePackages';
+import Clients from './components/Clients';
+
+function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/event/:id" element={<EventPage />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/about-us" element={<AboutUs />} />
+                <Route path="/packages" element={<Packages />} />
+                <Route path="/purchase-packages" element={<PurchasePackages />} />
+                <Route path="/clients" element={<Clients />} />
             </Routes>
         </Router>
     );
-};
+}
 
 export default App;

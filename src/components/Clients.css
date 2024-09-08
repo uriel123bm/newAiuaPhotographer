@@ -1,0 +1,49 @@
+/* Clients.css */
+.clients-container {
+    padding: 20px;
+    background-color: #f4f4f4; /* Example background color */
+    min-height: 100vh; /* Ensure the container takes full height */
+    text-align: center;
+}
+
+.clients-title {
+    font-size: 2rem;
+    color: #003366; /* Dark Blue */
+    margin-bottom: 20px;
+}
+
+.clients-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between cards */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.client-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px; /* Adjust width as needed */
+    padding: 20px;
+    text-align: center;
+}
+
+.client-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%; /* Make images round */
+}
+
+.client-name {
+    font-size: 1.5rem;
+    color: #003366; /* Dark Blue */
+    margin-top: 10px;
+}
+
+.client-testimonial {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+    font-style: italic;
+}

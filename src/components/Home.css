@@ -1,0 +1,98 @@
+/* Home.css */
+.home-page {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9; /* Background color */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.navbar {
+    background-color: #003366; /* Dark Blue */
+    padding: 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 20px;
+}
+
+.hero-section {
+    text-align: center;
+    margin-top: 70px; /* Adjusted for fixed navbar */
+    padding: 20px;
+}
+
+.cta-link {
+    color: #007BFF; /* Blue */
+    text-decoration: none;
+}
+
+.cta-link:hover {
+    text-decoration: underline;
+}
+
+.event-elements {
+    display: flex;
+    justify-content: center; /* Center the cards horizontally */
+    align-items: center;
+    overflow-x: auto; /* Allow horizontal scrolling if necessary */
+    padding: 20px;
+    gap: 20px;
+}
+
+.event-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px; /* Fixed width for cards */
+    text-align: center;
+    flex-shrink: 0; /* Prevent cards from shrinking */
+}
+
+.event-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.event-card h3 {
+    font-size: 1.5rem;
+    color: #003366; /* Dark Blue */
+    margin-bottom: 10px;
+}
+
+.event-card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .event-elements {
+        flex-direction: row;
+        overflow-x: scroll; /* Enable horizontal scrolling for smaller screens */
+    }
+}

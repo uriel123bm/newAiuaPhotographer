@@ -1,85 +1,87 @@
+/* General styling for the login page */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f4f8;
+}
 
-
-.login-box {
-    width: 360px;
-    padding: 20px;
-    background: white;
+.login-container {
+    width: 400px;
+    padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
     text-align: center;
 }
 
-.logo {
+.login-header h2 {
     margin-bottom: 20px;
-    align-items: center;
+    color: #333;
+    font-family: Arial, sans-serif;
 }
 
-.login-input {
+.input-container {
+    margin-bottom: 15px;
+}
+
+.input-field {
     width: 100%;
     padding: 12px;
-    margin-bottom: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-family: Arial, sans-serif;
+}
+
+.input-field:focus {
+    border-color: #007bff;
 }
 
 .login-button {
     width: 100%;
     padding: 12px;
-    background-color: #1877f2;
-    color: white;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
-    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    font-family: Arial, sans-serif;
 }
 
-
 .login-button:hover {
-    background-color: #165dbf;
+    background-color: #0056b3;
 }
 
 .error-message {
     color: red;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 14px;
 }
 
-.forgot-password {
-    display: block;
-    margin-bottom: 10px;
-    color: #1877f2;
+.register-link {
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: #007bff;
     text-decoration: none;
 }
 
-.create-account-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #42b72a;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+.register-link a:hover {
+    text-decoration: underline;
 }
 
-.create-account-button:hover {
-    background-color: #36a420;
-}
-.logo-right {
+/* Styling for the logo image to have rounded corners */
+.logo-image {
+    margin-top: 20px;
+    max-width: 100px;
     display: block;
     margin-left: auto;
-    margin-right: 0;
-    width: 100px; /* תוכל לשנות את הערך לפי הצורך */
-    height: auto;
+    margin-right: auto;
+    border-radius: 50%; /* Makes the image perfectly round if square */
 }
-.Login-app{
-    margin-left: 301px;
-    /*margin-right: auto;*/
-    margin-top: 150px;
-    /*width: 100px; !* תוכל לשנות את הערך לפי הצורך *!*/
-    height: auto;
-    border-color: antiquewhite;
-}
-

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import '../Login.css'; // ייבוא קובץ ה-CSS
-import '../App.css';
+import '../Login.css'; // Import CSS file
+import '../App.css'; // Import App-level CSS if needed
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -17,35 +17,60 @@ const Login = () => {
             setError('');
             navigate('/profile');
         } else {
-            setError('אימייל או סיסמה שגויים');
+            setError('Incorrect email or password');
         }
     };
 
     return (
-        <div >
-          <div className={"App-container"}>
-              <h2>התחברות</h2>
-              <form onSubmit={handleSubmit}>
-                  <div>
-                      <input placeholder={"הכנס אימייל"} type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                  </div>
+        <div className="login-page">
+            {/* Navigation Bar */}
+            <nav className="navbar">
+                <ul className="nav-links">
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/login">Login</Link></li>
+                    <li><Link to="/about-us">About Us</Link></li>
+                    <li><Link to="/packages">Our Packages</Link></li>
+                    <li><Link to="/clients">Our Clients</Link></li>
+                </ul>
+            </nav>
 
-                  <div>
-
-                      <input placeholder={"הכנס סיסמה מדאפקה"} type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                  </div>
-                  <button  type="submit">התחבר</button>
-                  {error && <p style={{ color: 'red' }}>{error}</p>}
-
-              </form>
-              <div className={"Link-Style"}>
-                  <p>עוד לא רשום? <Link to="/Register">הירשם</Link></p>
-              </div>
-              <div style={{marginRight:150}}>
-                  <img src="/aiua_logo.jpeg" alt="Logo" className="logo-right" /> {/* הלוגו עם מחלקה */}
-              </div>
-          </div>
-
+            <div className="login-container">
+                <div className="login-header">
+                    <h2>Login</h2>
+                </div>
+                <form onSubmit={handleSubmit} className="login-form">
+                    <div className="input-container">
+                        <input
+                            className="input-field"
+                            placeholder="Enter your email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="input-container">
+                        <input
+                            className="input-field"
+                            placeholder="Enter your password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <button className="login-button" type="submit">
+                        Log In
+                    </button>
+                    {error && <p className="error-message">{error}</p>}
+                </form>
+                <div className="register-link">
+                    <p>
+                        Not registered yet? <Link to="/register">Sign up</Link>
+                    </p>
+                </div>
+                <img src="/aiua_logo.jpeg" alt="Logo" className="logo-image" />
+            </div>
         </div>
     );
 };

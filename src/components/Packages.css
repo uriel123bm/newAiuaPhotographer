@@ -1,0 +1,99 @@
+/* Packages.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.packages-container {
+    padding: 40px;
+    background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    min-height: 100vh; /* Ensures full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.packages-title {
+    font-size: 2.5rem;
+    color: #003366; /* Dark Blue */
+    margin-bottom: 30px;
+}
+
+.packages-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.package-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.package-card:hover {
+    transform: scale(1.05);
+}
+
+.package-title {
+    font-size: 1.8rem;
+    color: #003366; /* Dark Blue */
+    margin-bottom: 10px;
+}
+
+.package-details {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.package-details li {
+    margin-bottom: 10px;
+}
+
+.package-price {
+    font-size: 1.5rem;
+    color: #003366; /* Dark Blue */
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.purchase-button {
+    padding: 10px 20px;
+    background-color: #003366; /* Dark Blue */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif; /* Modern and readable font */
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.purchase-button:hover {
+    background-color: #002244; /* Darker Blue on hover */
+}
+
+.home-button {
+    padding: 10px 20px;
+    background-color: #007BFF; /* Blue */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #0056b3; /* Darker Blue on hover */
+}

@@ -1,0 +1,59 @@
+/* PurchasePackages.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.purchase-packages-container {
+    padding: 40px;
+    background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    min-height: 100vh; /* Ensures full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.purchase-title {
+    font-size: 2.5rem;
+    color: #003366; /* Dark Blue */
+    margin-bottom: 30px;
+}
+
+.purchase-text {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.back-button, .home-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.back-button {
+    background-color: #003366; /* Dark Blue */
+    color: #fff;
+}
+
+.back-button:hover {
+    background-color: #002244; /* Darker Blue on hover */
+}
+
+.home-button {
+    background-color: #007BFF; /* Blue */
+    color: #fff;
+}
+
+.home-button:hover {
+    background-color: #0056b3; /* Darker Blue on hover */
+}

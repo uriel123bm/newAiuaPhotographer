@@ -17,7 +17,7 @@ const Profile = () => {
     useEffect(() => {
         const storedUser = JSON.parse(localStorage.getItem('user'));
         if (storedUser) {
-            setFullName(storedUser.fullName); // שינוי ל-fullName
+            setFullName(storedUser.fullName);
         }
     }, []);
 
@@ -42,6 +42,9 @@ const Profile = () => {
             setEvents(updatedEvents);
             setNewEvent({ name: '', location: '', date: '' });
             setShowModal(false);
+
+            // ניתוב לדף האירוע החדש
+            navigate(`/event/${newEvent.name}-${newEvent.location}`, { state: { event: newEvent } });
         } else if (isEventDuplicate()) {
             alert('אירוע כזה כבר קיים!');
         }
@@ -59,7 +62,7 @@ const Profile = () => {
 
     return (
         <div>
-            <h2 className={"Name-style"}>שלום {fullName}</h2> {/* שימוש ב-fullName */}
+            <h2 className={"Name-style"}>שלום {fullName}</h2>
             <div className="event-container">
                 <h3 className={"Event-style"}>האירועים שלי</h3>
                 <ul>

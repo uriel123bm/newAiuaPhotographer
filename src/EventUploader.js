@@ -91,6 +91,7 @@ const EventUploader = () => {
         </div>
     );
 };
+// TODO להוציא לקובץ נפרד
 
 const styles = {
     container: {

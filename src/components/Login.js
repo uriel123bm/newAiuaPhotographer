@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css'; // Import CSS file
 import '../App.css'; // Import App-level CSS if needed
+import Register from './Register'; // Import the Register component
+import Navbar from '../components/Navbar'; // ייבוא הקומפוננטה של ה-Navbar
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [showRegisterModal, setShowRegisterModal] = useState(false); // State for modal
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -21,19 +25,18 @@ const Login = () => {
         }
     };
 
+    const openRegisterModal = () => {
+        setShowRegisterModal(true); // Open the modal
+    };
+
+    const closeRegisterModal = () => {
+        setShowRegisterModal(false); // Close the modal
+    };
+
     return (
         <div className="login-page">
-            {/* Navigation Bar */}
-            <nav className="navbar">
-                <ul className="nav-links">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/about-us">About Us</Link></li>
-                    <li><Link to="/packages">Our Packages</Link></li>
-                    <li><Link to="/clients">Our Clients</Link></li>
-                </ul>
-            </nav>
-
+            {/* מייבא מהקופוננטה*/}
+            <Navbar />
             <div className="login-container">
                 <div className="login-header">
                     <h2>Login</h2>
@@ -66,11 +69,21 @@ const Login = () => {
                 </form>
                 <div className="register-link">
                     <p>
-                        Not registered yet? <Link to="/register">Sign up</Link>
+                        Not registered yet? <span onClick={openRegisterModal} style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}>Sign up</span>
                     </p>
                 </div>
                 <img src="/aiua_logo.jpeg" alt="Logo" className="logo-image" />
             </div>
+
+            {/* Modal for Registration */}
+            {showRegisterModal && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={closeRegisterModal}>&times;</span>
+                        <Register closeModal={closeRegisterModal} />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

@@ -9,7 +9,7 @@ const Profile = () => {
         name: '',
         location: '',
         date: ''
-    });
+});
 
     const navigate = useNavigate();
 
@@ -42,23 +42,24 @@ const Profile = () => {
             setEvents(updatedEvents);
             setNewEvent({ name: '', location: '', date: '' });
             setShowModal(false);
-
-            // ניתוב לדף האירוע החדש
-            navigate(`/event/${newEvent.name}-${newEvent.location}`, { state: { event: newEvent } });
+            // ניתוב לדף הפרופיל לאחר הוספת האירוע
+            navigate('/profile');
         } else if (isEventDuplicate()) {
             alert('אירוע כזה כבר קיים!');
         }
     };
+
 
     // פונקציה לעדכון השדות של האירוע
     const handleInputChange = (e) => {
         setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
     };
 
-    // פונקציה למעבר לדף האירוע
+    //פונקציה למעבר לדף האירוע
     const handleEventClick = (event) => {
         navigate(`/event/${event.name}-${event.location}`, { state: { event } });
     };
+
 
     return (
         <div>
@@ -77,7 +78,7 @@ const Profile = () => {
             </div>
             <button onClick={() => setShowModal(true)}>הוסף אירוע</button>
             {showModal && (
-                <div className="modal">
+                <div className="modal-event">
                     <div className="modal-content">
                         <h3>הוסף אירוע חדש</h3>
                         <input

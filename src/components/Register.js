@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const Register = () => {
+const Register = ({ closeModal }) => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [isFormValid, setIsFormValid] = useState(false);
     const [error, setError] = useState('');
-    const navigate = useNavigate();
 
     useEffect(() => {
         validateForm();
@@ -47,7 +46,7 @@ const Register = () => {
             const user = { fullName, email, password };
             localStorage.setItem('user', JSON.stringify(user));
             alert('נרשמת בהצלחה!');
-            navigate('/profile'); // ניווט לדף הפרופיל לאחר ההרשמה
+            closeModal(); // Close the modal after successful registration
         }
     };
 
@@ -69,10 +68,8 @@ const Register = () => {
                         onChange={handlePasswordChange}
                     />
                     <span
-
-                    //  TODO: להוציא לCSS את העיצוב
-
-                      style={{
+                        //צריך להעביר את הCSS
+                        style={{
                             position: 'absolute',
                             top: '5px',
                             cursor: 'pointer',
@@ -92,7 +89,8 @@ const Register = () => {
 
                 {error && <p style={{ color: 'red' }}>{error}</p>}
             </form>
-            <p className="Link-Style">נרשמת כבר? <Link to="/">התחבר</Link></p>
+
+            <p className="Link-Style">נרשמת כבר? <span onClick={closeModal} style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}>התחבר</span></p>
         </div>
     );
 };

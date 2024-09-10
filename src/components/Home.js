@@ -1,20 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/Home.css'; // Import the CSS file for styling
-
+import Navbar from '../components/Navbar'; // ייבוא הקומפוננטה של ה-Navbar
+import '../styles/Home.css'; // ייבוא קובץ CSS של דף הבית
 const Home = () => {
     return (
         <div className="home-page">
-            {/* Navigation Bar */}
-            <nav className="navbar">
-                <ul className="nav-links">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/about-us">About Us</Link></li>
-                    <li><Link to="/packages">Our Packages</Link></li>
-                    <li><Link to="/clients">Our Clients</Link></li>
-                </ul>
-            </nav>
+            {/* מייבא מהקופוננטה*/}
+            <Navbar />
 
             {/* Main Content */}
             <div className="hero-section">

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // Import Link here
 import '../styles/AboutUs.css';
+import Navbar from "./Navbar";
+
 
 const AboutUs = () => {
     const navigate = useNavigate();
@@ -11,16 +13,8 @@ const AboutUs = () => {
 
     return (
         <div className="about-us-container">
-            {/* Navigation Bar */}
-            <nav className="navbar">
-                <ul className="nav-links">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/about-us">About Us</Link></li>
-                    <li><Link to="/packages">Our Packages</Link></li>
-                    <li><Link to="/clients">Our Clients</Link></li>
-                </ul>
-            </nav>
+            {/* מייבא מהקופוננטה*/}
+            <Navbar />
 
             <h1 className="about-us-title">About Us</h1>
             <p className="about-us-text">

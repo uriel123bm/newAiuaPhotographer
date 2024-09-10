@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // Import Link here
 import '../styles/Packages.css';
+import Navbar from "./Navbar";
 
 const PackageCard = ({ title, details, price }) => {
     const navigate = useNavigate();
@@ -35,16 +36,8 @@ const Packages = () => {
 
     return (
         <div className="packages-container">
-            {/* Navigation Bar */}
-            <nav className="navbar">
-                <ul className="nav-links">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/about-us">About Us</Link></li>
-                    <li><Link to="/packages">Our Packages</Link></li>
-                    <li><Link to="/clients">Our Clients</Link></li>
-                </ul>
-            </nav>
+            {/* מייבא מהקופוננטה*/}
+            <Navbar />
 
             <h1 className="packages-title">Our Packages</h1>
             <div className="packages-grid">

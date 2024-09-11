@@ -78,7 +78,7 @@ const Login = () => {
             {/* Modal for Registration */}
             {showRegisterModal && (
                 <div className="modal">
-                    <div className="modal-content">
+                    <div className="modal-content1">
                         <span className="close" onClick={closeRegisterModal}>&times;</span>
                         <Register closeModal={closeRegisterModal} />
                     </div>

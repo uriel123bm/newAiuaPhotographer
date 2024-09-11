@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import '../styles/Profile.css';
+
 
 const Profile = () => {
     const [fullName, setFullName] = useState('');
@@ -65,7 +67,7 @@ const Profile = () => {
         <div>
             <h2 className={"Name-style"}>שלום {fullName}</h2>
             <div className="event-container">
-                <h3 className={"Event-style"}>האירועים שלי</h3>
+                <h3>האירועים שלי</h3>
                 <ul>
                     {events.map((event, index) => (
                         <li key={index}>

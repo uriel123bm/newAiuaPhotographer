@@ -1,0 +1,79 @@
+.modal-event {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.event-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px; /* רוחב התיבה בצד ימין */
+    height: 100%; /* גובה מלא של המסך */
+    background-color: #f4f4f4; /* צבע רקע */
+    border-left: 2px solid #ddd; /* קו גבול בצד שמאל */
+    padding: 20px; /* רווח פנימי */
+    overflow-y: auto; /* גלילה אנכית אם התוכן עולה על גובה התיבה */
+    z-index: -55;
+}
+
+/* עיצוב הכותרת של הרשימה */
+.event-container h3 {
+    margin-top: 80px;
+    font-size: 1.5em;
+    color: #333;
+}
+/* עיצוב הרשימה של האירועים */
+.event-container ul {
+    list-style-type: none; /* מסיר את הנקודות של הרשימה */
+    padding: 0;
+    margin: 0;
+}
+
+/* עיצוב כל פריט ברשימה */
+.event-container li {
+    margin-bottom: 10px; /* רווח בין פריטי הרשימה */
+}
+/* עיצוב הכפתור של כל אירוע */
+.event-container button {
+    display: block;
+    width:220px;
+    background-color: #6bc1f3;
+    border: none;
+    padding: 10px;
+    font-size: small;
+    color: white;
+    text-align: right; /* טקסט מיושר לשמאל */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* שינוי צבע הכפתור כאשר העכבר מעליו */
+.event-container button:hover {
+    background-color: #4a9ad4;
+}
+.Title-style{
+    margin-left: 0px;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    max-width: 100%;
+    border-radius: 8px;
+}
+.Name-style{
+    background-color: #6bc1f3;
+    padding: 20px;
+    margin-top: 0px;
+    font-size: medium;
+    text-align: center;
+}

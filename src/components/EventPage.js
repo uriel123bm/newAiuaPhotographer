@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import '../styles/EventPage.css';
 
 const EventPage = () => {
     const location = useLocation();

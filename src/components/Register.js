@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Register.css';
 
-
 const Register = ({ closeModal }) => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,11 +16,11 @@ const Register = ({ closeModal }) => {
     }, [fullName, email, password, confirmPassword, phoneNumber]);
 
     const validateForm = () => {
-        const fullNameValid = fullName.trim() !== '';
-        const emailValid = email.includes('@');
-        const passwordValid = password.length >= 8 && /[A-Za-z]/.test(password);
+        const fullNameValid = /^[A-Za-zא-ת\s]+$/.test(fullName); // שם יכול להכיל אותיות באנגלית, עברית ורווחים
+        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); // אימייל תקין
+        const passwordValid = /^[A-Z][A-Za-z0-9]{5,9}$/.test(password); // סיסמה מתחילה באות גדולה, מכילה לפחות ספרה אחת, ואורכה בין 6 ל-10 תווים
         const passwordsMatch = password === confirmPassword;
-        const phoneValid = /^[0-9]{7}$/.test(phoneNumber); // בדיוק 7 ספרות
+        const phoneValid = /^[0-9]{7}$/.test(phoneNumber); // בדיוק 7 ספרות לטלפון
         setIsFormValid(fullNameValid && emailValid && passwordValid && passwordsMatch && phoneValid);
     };
 
@@ -72,32 +71,45 @@ const Register = ({ closeModal }) => {
             <h2>הרשמה</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <input placeholder={"שם מלא"} type="text" value={fullName} onChange={handleFullNameChange} />
+                    <input
+                        placeholder={"שם מלא"}
+                        type="text"
+                        value={fullName}
+                        onChange={handleFullNameChange}
+                        title="השם יכול להכיל אותיות באנגלית, עברית ורווחים בלבד." // Tooltip
+                    />
                 </div>
                 <div>
-                    <input placeholder={"אימייל"} type="email" value={email} onChange={handleEmailChange} />
+                    <input
+                        placeholder={"אימייל"}
+                        type="email"
+                        value={email}
+                        onChange={handleEmailChange}
+                        title="הכנס אימייל תקין (למשל, example@example.com)." // Tooltip
+                    />
                 </div>
                 <div style={{ position: 'relative' }}>
                     <input
-                        placeholder={"סיסמה רצינית"}
+                        placeholder={"סיסמה"}
                         type="password"
                         value={password}
                         onChange={handlePasswordChange}
+                        title="הסיסמה צריכה להתחיל באות גדולה, להכיל לפחות ספרה אחת, ואורכה בין 6 ל-10 תווים." // Tooltip
                     />
-                    <span className={"style-register"}
-
-                        title="הסיסמה צריכה להכיל לפחות 8 תווים ולכלול אותיות באנגלית (A-Z)"
-                    >
-                        ?
-                    </span>
                 </div>
                 <div>
-                    <input placeholder={"תאשר ת'סיסמה נו"} type="password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
+                    <input
+                        placeholder={"אישור סיסמה"}
+                        type="password"
+                        value={confirmPassword}
+                        onChange={handleConfirmPasswordChange}
+                        title="וודא שהסיסמה תואמת לזו שהכנסת קודם." // Tooltip
+                    />
                 </div>
 
                 {/* קידומת ומספר טלפון */}
                 <div>
-                    <select value={phonePrefix} onChange={handlePhonePrefixChange}>
+                    <select value={phonePrefix} onChange={handlePhonePrefixChange} title="בחר את הקידומת שלך (050-058).">
                         <option value="050">050</option>
                         <option value="052">052</option>
                         <option value="053">053</option>
@@ -110,6 +122,7 @@ const Register = ({ closeModal }) => {
                         type="text"
                         value={phoneNumber}
                         onChange={handlePhoneNumberChange}
+                        title="הכנס מספר טלפון בן 7 ספרות, ללא רווחים או תווים נוספים." // Tooltip
                         required
                     />
                 </div>

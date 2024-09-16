@@ -1,0 +1,35 @@
+.carousel-section {
+    margin: 40px auto; /* מרכז את ה-carousel בדף */
+    max-width: 1200px; /* מגביל את רוחב ה-carousel */
+    padding: 20px; /* הוסף ריפוד סביב ה-carousel */
+}
+
+
+.client-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.client-image {
+    width: 100%; /* התאם את רוחב התמונה לכרטיס */
+    max-width: 100%; /* תמונה לא תתפוס יותר מרוחב הכרטיס */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.client-name {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.client-testimonial {
+    font-style: italic;
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+    max-width: 80%;
+}

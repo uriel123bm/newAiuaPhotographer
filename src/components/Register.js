@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Register.css';
+import axios from "axios";
 
 const Register = ({ closeModal }) => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [phonePrefix, setPhonePrefix] = useState('052'); // ברירת מחדל ל-052
+    const [phonePrefix, setPhonePrefix] = useState('050'); // ברירת מחדל ל-052
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isFormValid, setIsFormValid] = useState(false);
     const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     useEffect(() => {
         validateForm();
@@ -55,15 +57,40 @@ const Register = ({ closeModal }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const fullPhoneNumber = `${phonePrefix}${phoneNumber}`;
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-        if (storedUser && storedUser.email === email) {
-            setError('מייל זה כבר בשימוש, נסה מייל אחר.');
-        } else {
-            const user = { fullName, email, password, phone: fullPhoneNumber };
-            localStorage.setItem('user', JSON.stringify(user));
-            alert('נרשמת בהצלחה!');
-            closeModal(); // Close the modal after successful registration
-        }
+        axios.post('http://localhost:8000/register/', {
+            name: fullName,
+            email: email,
+            password: password,
+            phone: fullPhoneNumber
+        })
+            .then(response => {
+                // במידה והבקשה הצליחה
+                setSuccessMessage('Registration successful!');
+                setError('');  // לנקות הודעות שגיאה קודמות
+            })
+            .catch(error => {
+                // טיפול בשגיאות
+                if (error.response) {
+                    // שגיאה מהשרת
+                    setError(error.response.data.error || 'An error occurred.');  // הגדרת הודעת שגיאה לפי הנתונים מהשרת
+                } else if (error.request) {
+                    // שגיאה בקבלת התגובה מהשרת
+                    setError('No response from server.');
+                } else {
+                    // שגיאה במהלך יצירת הבקשה
+                    setError(`Error: ${error.message}`);
+                }
+                setSuccessMessage('');  // לנקות הודעות הצלחה קודמות
+            });
+        // const storedUser = JSON.parse(localStorage.getItem('user'));
+        // if (storedUser && storedUser.email === email) {
+        //     setError('מייל זה כבר בשימוש, נסה מייל אחר.');
+        // } else {
+        //     const user = { fullName, email, password, phone: fullPhoneNumber };
+        //     localStorage.setItem('user', JSON.stringify(user));
+        //     alert('נרשמת בהצלחה!');
+        //     closeModal(); // Close the modal after successful registration
+        // }
     };
 
     return (
@@ -130,6 +157,7 @@ const Register = ({ closeModal }) => {
                 <button type="submit" disabled={!isFormValid}>הרשם</button>
 
                 {error && <p style={{ color: 'red' }}>{error}</p>}
+                {successMessage && <p style={{ color: 'blue' }}>{successMessage}</p>}
             </form>
 
             <p className="Link-Style">נרשמת כבר? <span onClick={closeModal} style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}>התחבר</span></p>

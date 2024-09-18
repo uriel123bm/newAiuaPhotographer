@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../styles/Login.css'; // Import CSS file
-import '../App.css'; // Import App-level CSS if needed
-import Register from './Register'; // Import the Register component
-import Navbar from '../components/Navbar';
-import axios from "axios"; // ייבוא הקומפוננטה של ה-Navbar
-
+import { useNavigate } from 'react-router-dom';
+import '../styles/Login.css'; // קובץ CSS עבור סגנון עמוד ההתחברות
+import axios from 'axios';
+import Navbar from '../components/Navbar'; // ייבוא ה-Navbar
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [showRegisterModal, setShowRegisterModal] = useState(false); // State for modal
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
@@ -21,88 +17,48 @@ const Login = () => {
             password: password
         })
             .then(response => {
-                // אם ההתחברות הצליחה, תוכל לעדכן את מצב השגיאות או המידע שהתקבל
                 console.log('Login successful:', response.data);
-
-                // תוכל להוסיף כאן קוד להמשך הטיפול בהצלחה, כמו ניווט לדף אחר
-
+                // ניתוב במידה וההתחברות הצליחה
+                navigate('/profile');
             })
             .catch(error => {
                 if (error.response) {
-                    // הבקשה נשלחה והשרת החזיר תשובה עם שגיאה
-                    console.error('Error:', error.response.data)
-                    setError(error.response.data)
+                    console.error('Error:', error.response.data);
+                    setError(error.response.data);
                 } else if (error.request) {
-                    // הבקשה נשלחה אך לא התקבלה תשובה מהשרת
                     console.error('Error:', error.request);
-                    setError(error.request)
+                    setError('No response from server');
                 } else {
-                    // שגיאה בהגדרת הבקשה
                     console.error('Error:', error.message);
-                    setError(error.message)
+                    setError(error.message);
                 }
             });
     };
 
-    const openRegisterModal = () => {
-        setShowRegisterModal(true); // Open the modal
-    };
-
-    const closeRegisterModal = () => {
-        setShowRegisterModal(false); // Close the modal
-    };
-
     return (
         <div className="login-page">
-            {/* מייבא מהקופוננטה*/}
-            <Navbar />
+            <Navbar /> {/* הצגת ה-Navbar בעמוד ההתחברות */}
             <div className="login-container">
-                <div className="login-header">
-                    <h2>Login</h2>
-                </div>
+                <h2>Login</h2>
                 <form onSubmit={handleSubmit} className="login-form">
-                    <div className="input-container">
-                        <input
-                            className="input-field"
-                            placeholder="Enter your email"
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="input-container">
-                        <input
-                            className="input-field"
-                            placeholder="Enter your password"
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <button className="login-button" type="submit">
-                        Log In
-                    </button>
+                    <input
+                        type="email"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    <button type="submit">Log In</button>
                     {error && <p className="error-message">{error}</p>}
                 </form>
-                <div className="register-link">
-                    <p>
-                        Not registered yet? <span onClick={openRegisterModal} style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}>Sign up</span>
-                    </p>
-                </div>
-                <img src="/aiua_logo.jpeg" alt="Logo" className="logo-image" />
             </div>
-
-            {/* Modal for Registration */}
-            {showRegisterModal && (
-                <div className="modal">
-                    <div className="modal-content1">
-                        <span className="close" onClick={closeRegisterModal}>&times;</span>
-                        <Register closeModal={closeRegisterModal} />
-                    </div>
-                </div>
-            )}
         </div>
     );
 };

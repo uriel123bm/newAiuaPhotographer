@@ -32,3 +32,14 @@
     margin-top: 20px;
 }
 
+div[type="wedding-background"] .block-card-front {
+    background-image: url('/public/wedding-icon.png');
+}
+
+div[type="conference-background"] .block-card-front {
+    background-image: url('/public/conference.jpg');
+}
+
+div[type="private-background"] .block-card-front {
+    background-image: url('/public/private.png');
+}

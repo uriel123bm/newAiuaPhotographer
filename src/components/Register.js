@@ -7,7 +7,6 @@ const Register = ({ closeModal }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [phonePrefix, setPhonePrefix] = useState('050'); // ברירת מחדל ל-052
     const [phoneNumber, setPhoneNumber] = useState('');
     const [isFormValid, setIsFormValid] = useState(false);
     const [error, setError] = useState('');
@@ -22,7 +21,7 @@ const Register = ({ closeModal }) => {
         const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); // אימייל תקין
         const passwordValid = /^[A-Z][A-Za-z0-9]{5,9}$/.test(password); // סיסמה מתחילה באות גדולה, מכילה לפחות ספרה אחת, ואורכה בין 6 ל-10 תווים
         const passwordsMatch = password === confirmPassword;
-        const phoneValid = /^[0-9]{7}$/.test(phoneNumber); // בדיוק 7 ספרות לטלפון
+        const phoneValid = /^05[0-9]{8}$/.test(phoneNumber); // בדיוק 7 ספרות לטלפון
         setIsFormValid(fullNameValid && emailValid && passwordValid && passwordsMatch && phoneValid);
     };
 
@@ -42,26 +41,23 @@ const Register = ({ closeModal }) => {
         setConfirmPassword(e.target.value);
     };
 
-    const handlePhonePrefixChange = (e) => {
-        setPhonePrefix(e.target.value);
-    };
+
 
     const handlePhoneNumberChange = (e) => {
         const value = e.target.value;
         // לאפשר הזנת מספרים בלבד ולוודא שהמספר הוא עד 7 ספרות
-        if (/^[0-9]*$/.test(value) && value.length <= 7) {
+        if (/^[0-9]*$/.test(value) && value.length <= 10) {
             setPhoneNumber(value);
         }
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const fullPhoneNumber = `${phonePrefix}${phoneNumber}`;
         axios.post('http://localhost:8000/register/', {
             name: fullName,
             email: email,
             password: password,
-            phone: fullPhoneNumber
+            phone: phoneNumber
         })
             .then(response => {
                 // במידה והבקשה הצליחה
@@ -82,22 +78,13 @@ const Register = ({ closeModal }) => {
                 }
                 setSuccessMessage('');  // לנקות הודעות הצלחה קודמות
             });
-        // const storedUser = JSON.parse(localStorage.getItem('user'));
-        // if (storedUser && storedUser.email === email) {
-        //     setError('מייל זה כבר בשימוש, נסה מייל אחר.');
-        // } else {
-        //     const user = { fullName, email, password, phone: fullPhoneNumber };
-        //     localStorage.setItem('user', JSON.stringify(user));
-        //     alert('נרשמת בהצלחה!');
-        //     closeModal(); // Close the modal after successful registration
-        // }
     };
 
     return (
         <div className="App-container">
             <h2>הרשמה</h2>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className={"input-group"}>
                     <input
                         placeholder={"שם מלא"}
                         type="text"
@@ -105,8 +92,6 @@ const Register = ({ closeModal }) => {
                         onChange={handleFullNameChange}
                         title="השם יכול להכיל אותיות באנגלית, עברית ורווחים בלבד." // Tooltip
                     />
-                </div>
-                <div>
                     <input
                         placeholder={"אימייל"}
                         type="email"
@@ -114,8 +99,6 @@ const Register = ({ closeModal }) => {
                         onChange={handleEmailChange}
                         title="הכנס אימייל תקין (למשל, example@example.com)." // Tooltip
                     />
-                </div>
-                <div style={{ position: 'relative' }}>
                     <input
                         placeholder={"סיסמה"}
                         type="password"
@@ -123,8 +106,6 @@ const Register = ({ closeModal }) => {
                         onChange={handlePasswordChange}
                         title="הסיסמה צריכה להתחיל באות גדולה, להכיל לפחות ספרה אחת, ואורכה בין 6 ל-10 תווים." // Tooltip
                     />
-                </div>
-                <div>
                     <input
                         placeholder={"אישור סיסמה"}
                         type="password"
@@ -132,35 +113,24 @@ const Register = ({ closeModal }) => {
                         onChange={handleConfirmPasswordChange}
                         title="וודא שהסיסמה תואמת לזו שהכנסת קודם." // Tooltip
                     />
+                        <input
+                            placeholder={"הכנס מספר טלפון"}
+                            type="text"
+                            value={phoneNumber}
+                            onChange={handlePhoneNumberChange}
+                            title="הכנס מספר טלפון בן 7 ספרות, ללא רווחים או תווים נוספים." // Tooltip
+                            required
+                        />
                 </div>
 
                 {/* קידומת ומספר טלפון */}
-                <div>
-                    <select value={phonePrefix} onChange={handlePhonePrefixChange} title="בחר את הקידומת שלך (050-058).">
-                        <option value="050">050</option>
-                        <option value="052">052</option>
-                        <option value="053">053</option>
-                        <option value="054">054</option>
-                        <option value="055">055</option>
-                        <option value="058">058</option>
-                    </select>
-                    <input
-                        placeholder={"הכנס מספר טלפון"}
-                        type="text"
-                        value={phoneNumber}
-                        onChange={handlePhoneNumberChange}
-                        title="הכנס מספר טלפון בן 7 ספרות, ללא רווחים או תווים נוספים." // Tooltip
-                        required
-                    />
-                </div>
 
                 <button type="submit" disabled={!isFormValid}>הרשם</button>
-
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {successMessage && <p style={{ color: 'blue' }}>{successMessage}</p>}
             </form>
 
-            <p className="Link-Style">נרשמת כבר? <span onClick={closeModal} style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}>התחבר</span></p>
+            <p className="Link-Style">נרשמת כבר? <span onClick={closeModal} style={{ cursor: 'pointer', textDecoration: 'underline' }}>התחבר</span></p>
         </div>
     );
 };

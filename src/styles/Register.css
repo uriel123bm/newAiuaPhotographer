@@ -6,7 +6,8 @@
     background-color: #f0f2f5;
 }
 .Link-Style{
-    background-color:#13ff3c;
+    background-color:#003366;
+    color: white;
     width:85px;
     margin-left:160px;
     border-radius: 8px;
@@ -19,13 +20,15 @@
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f1f1f1;
+    background-color: #f0f4f8;
     border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
     align-items: center;
     justify-content: center;
 }
+
+
 
 .register-box {
     width: 400px;
@@ -47,10 +50,7 @@ p {
 }
 
 .input-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    position: relative;
+
 }
 
 .input-group input {
@@ -90,7 +90,7 @@ p {
 .register-button {
     width: 100%;
     padding: 12px;
-    background-color: #42b72a;
+    background-color: #003366;
     color: white;
     border: none;
     border-radius: 4px;
@@ -99,7 +99,7 @@ p {
 }
 
 .register-button:hover {
-    background-color: #36a420;
+    background-color: #003366;
 }
 .error-message {
     color: red;

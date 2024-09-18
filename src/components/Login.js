@@ -10,7 +10,7 @@ import axios from "axios"; // ייבוא הקומפוננטה של ה-Navbar
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [printError, setPrintError] = useState('');
     const [showRegisterModal, setShowRegisterModal] = useState(false); // State for modal
     const navigate = useNavigate();
 
@@ -23,6 +23,7 @@ const Login = () => {
             .then(response => {
                 // אם ההתחברות הצליחה, תוכל לעדכן את מצב השגיאות או המידע שהתקבל
                 console.log('Login successful:', response.data);
+                navigate("/profile")
 
                 // תוכל להוסיף כאן קוד להמשך הטיפול בהצלחה, כמו ניווט לדף אחר
 
@@ -30,16 +31,15 @@ const Login = () => {
             .catch(error => {
                 if (error.response) {
                     // הבקשה נשלחה והשרת החזיר תשובה עם שגיאה
-                    console.error('Error:', error.response.data)
-                    setError(error.response.data)
+                    setPrintError(error.response.data.error)
                 } else if (error.request) {
                     // הבקשה נשלחה אך לא התקבלה תשובה מהשרת
-                    console.error('Error:', error.request);
-                    setError(error.request)
+
+                    setPrintError(error.request)
                 } else {
                     // שגיאה בהגדרת הבקשה
-                    console.error('Error:', error.message);
-                    setError(error.message)
+
+                    setPrintError(error.message)
                 }
             });
     };
@@ -55,7 +55,6 @@ const Login = () => {
     return (
         <div className="login-page">
             {/* מייבא מהקופוננטה*/}
-            <Navbar />
             <div className="login-container">
                 <div className="login-header">
                     <h2>Login</h2>
@@ -84,8 +83,8 @@ const Login = () => {
                     <button className="login-button" type="submit">
                         Log In
                     </button>
-                    {error && <p className="error-message">{error}</p>}
                 </form>
+                    <p className="error-message">{printError}</p>
                 <div className="register-link">
                     <p>
                         Not registered yet? <span onClick={openRegisterModal} style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}>Sign up</span>

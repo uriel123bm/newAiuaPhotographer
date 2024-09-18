@@ -1,6 +1,24 @@
 .App {
   text-align: center;
 }
+html, body {
+  height: 100%; /* מבטיח שהגובה של הדף יתפוס את כל החלון */
+  margin: 0; /* מסיר את ההפסקות (margins) המוגדרות כברירת מחדל */
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* מבטיח שהדף יתפוס לפחות את גובה המסך */
+
+}
+
+.main-container {
+  flex: 1; /* מבטיח שהתוכן יתפוס את כל הגובה הפנוי */
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

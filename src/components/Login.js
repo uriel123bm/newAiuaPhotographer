@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../styles/Login.css'; // Import CSS file
 import '../App.css'; // Import App-level CSS if needed
 import Register from './Register'; // Import the Register component
-import Navbar from '../components/Navbar'; // ייבוא הקומפוננטה של ה-Navbar
+import Navbar from '../components/Navbar';
+import axios from "axios"; // ייבוא הקומפוננטה של ה-Navbar
 
 
 const Login = () => {
@@ -15,14 +16,32 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-        if (storedUser && storedUser.email === email && storedUser.password === password) {
-            console.log('User logged in:', { email, password });
-            setError('');
-            navigate('/profile');
-        } else {
-            setError('Incorrect email or password');
-        }
+        axios.post('http://localhost:8000/login/', {
+            email: email,
+            password: password
+        })
+            .then(response => {
+                // אם ההתחברות הצליחה, תוכל לעדכן את מצב השגיאות או המידע שהתקבל
+                console.log('Login successful:', response.data);
+
+                // תוכל להוסיף כאן קוד להמשך הטיפול בהצלחה, כמו ניווט לדף אחר
+
+            })
+            .catch(error => {
+                if (error.response) {
+                    // הבקשה נשלחה והשרת החזיר תשובה עם שגיאה
+                    console.error('Error:', error.response.data)
+                    setError(error.response.data)
+                } else if (error.request) {
+                    // הבקשה נשלחה אך לא התקבלה תשובה מהשרת
+                    console.error('Error:', error.request);
+                    setError(error.request)
+                } else {
+                    // שגיאה בהגדרת הבקשה
+                    console.error('Error:', error.message);
+                    setError(error.message)
+                }
+            });
     };
 
     const openRegisterModal = () => {

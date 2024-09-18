@@ -5,21 +5,21 @@ import Login from './components/Login';
 import AboutUs from './components/AboutUs';
 import Packages from './components/Packages';
 import PurchasePackages from './components/PurchasePackages';
-import Clients from './components/Clients';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import EventPage from './components/EventPage';
+import Navbar from "./components/Navbar";
 
 function App() {
     return (
         <Router>
+            <Navbar/>
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/packages" element={<Packages />} />
                 <Route path="/purchase-packages" element={<PurchasePackages />} />
-                <Route path="/clients" element={<Clients />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/event/:id" element={<EventPage />} />

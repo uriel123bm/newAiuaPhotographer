@@ -1,46 +1,12 @@
 /* Home.css */
 .home-page {
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f9f9; /* Background color */
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
 
-.navbar {
-    background-color: #003366; /* Dark Blue */
-    padding: 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
-
-.nav-links {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nav-links li {
-    display: inline;
-}
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    padding: 20px;
 }
 
 .hero-section {
     text-align: center;
-    margin-top: 70px; /* Adjusted for fixed navbar */
-    padding: 20px;
+    margin-top: 4%;
+
 }
 
 .cta-link {
@@ -56,75 +22,13 @@
     display: flex;
     justify-content: center; /* Center the cards horizontally */
     align-items: center;
-    overflow-x: auto; /* Allow horizontal scrolling if necessary */
-    padding: 20px;
-    gap: 20px;
+    padding: 1%;
+    gap: 1.5%;
+
 }
 
-.event-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px; /* Fixed width for cards */
+.our-clients {
     text-align: center;
-    flex-shrink: 0; /* Prevent cards from shrinking */
+    margin-top: 20px;
 }
 
-.event-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.event-card h3 {
-    font-size: 1.5rem;
-    color: #003366; /* Dark Blue */
-    margin-bottom: 10px;
-}
-
-.event-card p {
-    font-size: 1rem;
-    color: #666;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .event-elements {
-        flex-direction: row;
-        overflow-x: scroll; /* Enable horizontal scrolling for smaller screens */
-    }
-    .carousel-section {
-        margin: 20px;
-    }
-
-    .carousel-item {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 200px;
-        background-color: #f5f5f5;
-        border: 1px solid #ddd;
-    }
-
-    .carousel-item p {
-        font-size: 16px;
-        color: #333;
-    }
-    .our-clients {
-        text-align: center; /* מרכז את התוכן בתוך ה-div */
-        margin-top: 70px; /* מתחשב ב-navbar הקבוע */
-        padding: 20px;
-    }
-
-    .carousel-section {
-        display: inline-block; /* מאפשר מרכז את ה-carousel בעזרת `text-align` */
-        margin: 0 auto; /* מרכז את ה-carousel בתוך ההורה */
-        max-width: 1200px; /* קובע רוחב מקסימלי ל-carousel */
-        padding: 20px; /* הוסף ריפוד סביב ה-carousel */
-        box-sizing: border-box; /* לכלול גבולות ו-padding בחישוב הרוחב */
-    }
-
-
-}

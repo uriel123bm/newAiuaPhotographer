@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // Import Link here
 import '../styles/AboutUs.css';
 import Navbar from "./Navbar";
+import '../App.css'
 
 
 const AboutUs = () => {
@@ -12,10 +13,9 @@ const AboutUs = () => {
     };
 
     return (
-        <div className="about-us-container">
+        <div className="main-container">
             {/* מייבא מהקופוננטה*/}
-            <Navbar />
-
+        <div className={"about-us-container"}>
             <h1 className="about-us-title">About Us</h1>
             <p className="about-us-text">
                 <strong>Welcome to A.I.U.A</strong>, a pioneering company in software development and technological solutions. Founded by four college friends, we bring innovation and expertise to create cutting-edge technology experiences.
@@ -32,6 +32,9 @@ const AboutUs = () => {
             <button className="back-button" onClick={handleBackClick}>
                 Back to Home
             </button>
+        </div>
+
+
         </div>
     );
 };

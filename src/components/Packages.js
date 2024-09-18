@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate, Link } from 'react-router-dom'; // Import Link here
 import '../styles/Packages.css';
 import Navbar from "./Navbar";
+import '../App.css'
 
 const PackageCard = ({ title, details, price }) => {
     const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Packages = () => {
     };
 
     return (
-        <div className="packages-container">
+        <div className={"main-container"}>
             {/* מייבא מהקופוננטה*/}
             <Navbar />
 

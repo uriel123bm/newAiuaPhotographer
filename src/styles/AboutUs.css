@@ -1,12 +1,13 @@
 /* AboutUs.css */
 .about-us-container {
     padding-top: 60px; /* Adjust according to the Navbar height */
-    background-color: #f4f4f4; /* Example background color */
+
     text-align: center;
 
 }
 
 .about-us-title {
+    margin-top: 5%;
     font-size: 2rem;
     color: #003366; /* Dark Blue */
 }

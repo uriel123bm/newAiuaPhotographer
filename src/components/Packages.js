@@ -38,41 +38,43 @@ const Packages = () => {
     return (
         <div className={"main-container"}>
             {/* מייבא מהקופוננטה*/}
-            <Navbar />
-
-            <h1 className="packages-title">Our Packages</h1>
-            <div className="packages-grid">
-                <PackageCard
-                    title="Standard Package"
-                    details={[
-                        "12-month software subscription",
-                        "Up to 10 events per month",
-                        "Up to 500 photos per event"
-                    ]}
-                    price="200"
-                />
-                <PackageCard
-                    title="Premium Package"
-                    details={[
-                        "24-month subscription",
-                        "Up to 25 events per month",
-                        "Up to 1000 photos per event"
-                    ]}
-                    price="300"
-                />
-                <PackageCard
-                    title="Super Premium Package"
-                    details={[
-                        "36-month subscription",
-                        "Unlimited events",
-                        "Unlimited photos"
-                    ]}
-                    price="500"
-                />
+            <div className={"packages-container"}>
+                <h1 className="packages-title">Our Packages</h1>
+                <div className="packages-grid">
+                    <PackageCard
+                        title="Standard Package"
+                        details={[
+                            "12-month software subscription",
+                            "Up to 10 events per month",
+                            "Up to 500 photos per event"
+                        ]}
+                        price="200"
+                    />
+                    <PackageCard
+                        title="Premium Package"
+                        details={[
+                            "24-month subscription",
+                            "Up to 25 events per month",
+                            "Up to 1000 photos per event"
+                        ]}
+                        price="300"
+                    />
+                    <PackageCard
+                        title="Super Premium Package"
+                        details={[
+                            "36-month subscription",
+                            "Unlimited events",
+                            "Unlimited photos"
+                        ]}
+                        price="500"
+                    />
+                </div>
+                <button className="home-button" onClick={handleHomeClick}>
+                    Back to Home
+                </button>
             </div>
-            <button className="home-button" onClick={handleHomeClick}>
-                Back to Home
-            </button>
+
+
         </div>
     );
 };

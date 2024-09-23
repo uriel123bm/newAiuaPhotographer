@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Register.css';
 import axios from "axios";
 
-const Register = ({ closeModal }) => {
+const Register = ({ closeModal, nav}) => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -61,8 +61,12 @@ const Register = ({ closeModal }) => {
         })
             .then(response => {
                 // במידה והבקשה הצליחה
-                setSuccessMessage('Registration successful!');
+                setSuccessMessage('Registration successful! Sign in Now!');
                 setError('');  // לנקות הודעות שגיאה קודמות
+                setTimeout(()=>{
+                    closeModal(false)
+                },2000)
+
             })
             .catch(error => {
                 // טיפול בשגיאות

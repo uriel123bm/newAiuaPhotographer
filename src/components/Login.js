@@ -5,24 +5,29 @@ import '../App.css'; // Import App-level CSS if needed
 import Register from './Register'; // Import the Register component
 import Navbar from '../components/Navbar';
 import axios from "axios"; // ייבוא הקומפוננטה של ה-Navbar
+import Cookies from 'js-cookie';
 
 
-const Login = () => {
+const Login = ({updateLogged}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [printError, setPrintError] = useState('');
     const [showRegisterModal, setShowRegisterModal] = useState(false); // State for modal
     const navigate = useNavigate();
 
+
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:8000/login/', {
             email: email,
             password: password
-        })
+        },{ withCredentials: true })
             .then(response => {
                 // אם ההתחברות הצליחה, תוכל לעדכן את מצב השגיאות או המידע שהתקבל
                 console.log('Login successful:', response.data);
+                updateLogged(true)
                 navigate("/profile")
 
                 // תוכל להוסיף כאן קוד להמשך הטיפול בהצלחה, כמו ניווט לדף אחר
@@ -98,7 +103,7 @@ const Login = () => {
                 <div className="modal">
                     <div className="modal-content1">
                         <span className="close" onClick={closeRegisterModal}>&times;</span>
-                        <Register closeModal={closeRegisterModal} />
+                        <Register closeModal={closeRegisterModal} updateLogged={updateLogged} nav={navigate}/>
                     </div>
                 </div>
             )}

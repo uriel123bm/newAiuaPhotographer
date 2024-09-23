@@ -1,3 +1,48 @@
+.profile-header-container{
+    position: relative;
+    width: 80vw;
+    margin: 10px auto;
+    top: 10vh;
+    height: 10vh;
+    border-radius: 10px;
+    border: 3px solid #003366;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3)
+}
+
+.event-button{
+    position: relative;
+    border-radius: 10px;
+    width: 100px;
+    padding: 5px;
+    font-weight: bold;
+    color: #003366;
+    cursor: pointer;
+}
+
+#create-event{
+    top: 10vh;
+    margin-left: 1%;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    padding: 20px;
+    width: 35%;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3)
+}
+
+.modal-input{
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+
+
+
 .modal-event {
     position: fixed;
     top: 0;
@@ -10,70 +55,75 @@
     align-items: center;
 }
 
-.event-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 300px; /* רוחב התיבה בצד ימין */
-    height: 100%; /* גובה מלא של המסך */
-    background-color: #f4f4f4; /* צבע רקע */
-    border-left: 2px solid #ddd; /* קו גבול בצד שמאל */
-    padding: 20px; /* רווח פנימי */
+
+
+
+.events-container {
+    position: absolute;
+    top: 30vh;
+    margin-left: 1%;
+    width: 40%;
+    max-height: 60vh;
     overflow-y: auto; /* גלילה אנכית אם התוכן עולה על גובה התיבה */
-    z-index: -55;
-}
-
-/* עיצוב הכותרת של הרשימה */
-.event-container h3 {
-    margin-top: 80px;
-    font-size: 1.5em;
-    color: #333;
-}
-/* עיצוב הרשימה של האירועים */
-.event-container ul {
-    list-style-type: none; /* מסיר את הנקודות של הרשימה */
-    padding: 0;
-    margin: 0;
-}
-
-/* עיצוב כל פריט ברשימה */
-.event-container li {
-    margin-bottom: 10px; /* רווח בין פריטי הרשימה */
-}
-/* עיצוב הכפתור של כל אירוע */
-.event-container button {
-    display: block;
-    width:220px;
-    background-color: #6bc1f3;
-    border: none;
-    padding: 10px;
-    font-size: small;
-    color: white;
-    text-align: right; /* טקסט מיושר לשמאל */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-/* שינוי צבע הכפתור כאשר העכבר מעליו */
-.event-container button:hover {
-    background-color: #4a9ad4;
-}
-.Title-style{
-    margin-left: 0px;
-}
-
-.modal-content {
-    position: relative;
-    background-color: #fff;
+    border: 3px solid #003366;
+    border-radius: 10px;
     padding: 20px;
-    width: 400px;
-    max-width: 100%;
-    border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
-.Name-style{
-    background-color: #6bc1f3;
-    padding: 20px;
-    margin-top: 0px;
-    font-size: medium;
+
+.event-container-title{
     text-align: center;
+    font-weight: bold;
+    font-size: x-large;
+    color: #003366;
+
 }
+
+.event-list{
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 20px;
+    border: 1px solid #003366;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.event-list-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* שלושה עמודות שוות */
+    padding: 10px;
+    background-color: #003366;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px 8px 0 0; /* קצוות עליונים מעוגלים */
+}
+
+.event-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* שלוש עמודות שוות */
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+
+
+
+}
+.event-item:hover {
+    background-color: #c6d5e5;
+}
+
+.event-item.selected {
+    background-color: #93a9c2; /* צבע שונה לאירוע הנבחר */
+    color: #fff; /* טקסט לבן */
+}
+
+
+
+
+

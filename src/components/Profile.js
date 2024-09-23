@@ -1,61 +1,44 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import '../styles/Profile.css';
+import MyEvents from "./MyEvents";
+import axios from "axios";
+import CreateEvent from "./CreateEvent";
+import EventPage from "./EventPage";
 
 
 const Profile = () => {
-    const [fullName, setFullName] = useState('');
+    const [user, setUser] = useState({});
     const [events, setEvents] = useState([]);
     const [showModal, setShowModal] = useState(false);
-    const [newEvent, setNewEvent] = useState({
-        name: '',
-        location: '',
-        date: ''
-});
+
+    const [selectedEvent,setSelectedEvent] = useState(null)
 
     const navigate = useNavigate();
 
     // טוען את המידע של המשתמש מה-localStorage
     useEffect(() => {
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-        if (storedUser) {
-            setFullName(storedUser.fullName);
-        }
+        getUser()
+        getEvents()
     }, []);
 
-    // פונקציה לבדיקת אם כל השדות מלאים
-    const isFormComplete = () => {
-        return newEvent.name && newEvent.location && newEvent.date;
-    };
+    const getUser =()=>{
+        axios.get("http://localhost:8000/get-user",{withCredentials: true})
+            .then((response)=>{
+                debugger
+                setUser(response.data)
+            })
 
-    // פונקציה לבדוק אם האירוע כבר קיים
-    const isEventDuplicate = () => {
-        return events.some(event =>
-            event.name === newEvent.name &&
-            event.location === newEvent.location &&
-            event.date === newEvent.date
-        );
-    };
+    }
 
-    // פונקציה להוסיף אירוע
-    const handleAddEvent = () => {
-        if (isFormComplete() && !isEventDuplicate()) {
-            const updatedEvents = [...events, newEvent].sort((a, b) => new Date(a.date) - new Date(b.date));
-            setEvents(updatedEvents);
-            setNewEvent({ name: '', location: '', date: '' });
-            setShowModal(false);
-            // ניתוב לדף הפרופיל לאחר הוספת האירוע
-            navigate('/profile');
-        } else if (isEventDuplicate()) {
-            alert('אירוע כזה כבר קיים!');
-        }
-    };
+    const getEvents =()=>{
+        axios.get("http://localhost:8000/get-events",{withCredentials: true})
+            .then((response)=>{
 
+                setEvents(response.data)
+            })
 
-    // פונקציה לעדכון השדות של האירוע
-    const handleInputChange = (e) => {
-        setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
-    };
+    }
 
     //פונקציה למעבר לדף האירוע
     const handleEventClick = (event) => {
@@ -64,56 +47,20 @@ const Profile = () => {
 
 
     return (
-        <div>
-            <h2 className={"Name-style"}>שלום {fullName}</h2>
-            <div className="event-container">
-                <h3>האירועים שלי</h3>
-                <ul>
-                    {events.map((event, index) => (
-                        <li key={index}>
-                            <button onClick={() => handleEventClick(event)}>
-                                {event.name}, {event.date} ב-{event.location}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
+        <div className={"main-container"}>
+            <div className={"profile-header-container"}>
+                {user.name} {user.email} {user.phone}
             </div>
-            <button onClick={() => setShowModal(true)}>הוסף אירוע</button>
+            <button id={"create-event"} className={"event-button"} onClick={() => setShowModal(true)}>Create Event</button>
+            <MyEvents events={events} selectedEvent={selectedEvent} setSelectedEvent={setSelectedEvent}/>
             {showModal && (
-                <div className="modal-event">
-                    <div className="modal-content">
-                        <h3>הוסף אירוע חדש</h3>
-                        <input
-                            type="text"
-                            name="name"
-                            placeholder="שם האירוע"
-                            value={newEvent.name}
-                            onChange={handleInputChange}
-                        />
-                        <input
-                            type="text"
-                            name="location"
-                            placeholder="מיקום"
-                            value={newEvent.location}
-                            onChange={handleInputChange}
-                        />
-                        <input
-                            type="date"
-                            name="date"
-                            value={newEvent.date}
-                            onChange={handleInputChange}
-                        />
-                        <button
-                            onClick={handleAddEvent}
-                            disabled={!isFormComplete()} // הופך את הכפתור ללא פעיל אם השדות לא מלאים
-                        >
-                            שמור
-                        </button>
-                        <button onClick={() => setShowModal(false)}>סגור</button>
-                    </div>
-                </div>
+               <CreateEvent setShowModal={setShowModal} setEvents={setEvents}/>
             )}
-            <p className={"Link-exit"}>רוצה לצאת? <Link to="/">התנתק</Link></p>
+            {
+                selectedEvent !== null &&
+                <EventPage event={selectedEvent}/>
+            }
+
         </div>
     );
 };

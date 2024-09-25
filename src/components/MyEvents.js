@@ -9,6 +9,7 @@ function MyEvents({events, selectedEvent, setSelectedEvent}){
 
     return (
         <div className="events-container">
+            <div id={"edit-user-button"}>🖉</div>
             <div className={"event-container-title"}>MY EVENTS</div>
             <div className={"event-list"}>
                 <div className={"event-list-header"}>
@@ -22,7 +23,7 @@ function MyEvents({events, selectedEvent, setSelectedEvent}){
                         className={`event-item ${selectedEvent === event ? "selected" : ""}`}
                         onClick={() => handleEventClick(event)}
                     >
-                        <span>{event.name}</span>
+                        <span>{event.name}{!event.is_open && <span>🔒</span>}</span>
                         <span>{event.date}</span>
                         <span>{event.location}</span>
                     </div>

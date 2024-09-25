@@ -24,6 +24,21 @@
     margin-left: 1%;
 }
 
+
+#lock-event{
+    top: 6vh;
+    color: red;
+    border: 2px solid red;
+    float: right;
+    margin-right: 1%;
+}
+#photos-event{
+    top: 6vh;
+
+    float: right;
+    margin-right: 1%;
+}
+
 .modal-content {
     position: relative;
     background-color: #fff;
@@ -124,6 +139,17 @@
 }
 
 
+#edit-user-button{
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: larger;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-
+#edit-user-button:hover{
+    background-color: #a2adb9;
+}
 

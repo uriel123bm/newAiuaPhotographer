@@ -4,7 +4,7 @@ function MyEvents({events, selectedEvent, setSelectedEvent}){
 
     const handleEventClick = (event) => {
 
-        setSelectedEvent(event); // נניח שזו הפונקציה שמעדכנת מחוץ לקומפוננטה
+        setSelectedEvent(event);
     };
 
     return (
@@ -19,7 +19,7 @@ function MyEvents({events, selectedEvent, setSelectedEvent}){
                 </div>
                 {events.map((event) => (
                     <div
-                        key={event.id} // הוסף מפתח ייחודי לכל אירוע
+                        key={event.id}
                         className={`event-item ${selectedEvent === event ? "selected" : ""}`}
                         onClick={() => handleEventClick(event)}
                     >

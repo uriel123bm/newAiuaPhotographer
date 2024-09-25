@@ -10,7 +10,7 @@
 }
 
 .cta-link {
-    color: #007BFF; /* Blue */
+    color: #007BFF;
     text-decoration: none;
 }
 
@@ -20,7 +20,7 @@
 
 .event-elements {
     display: flex;
-    justify-content: center; /* Center the cards horizontally */
+    justify-content: center;
     align-items: center;
     padding: 1%;
     gap: 1.5%;

@@ -16,7 +16,6 @@ const Profile = () => {
 
     const navigate = useNavigate();
 
-    // טוען את המידע של המשתמש מה-localStorage
     useEffect(() => {
         getUser()
         getEvents()
@@ -46,10 +45,10 @@ const Profile = () => {
             const [dayA, monthA, yearA] = a.date.split('/').map(Number);
             const [dayB, monthB, yearB] = b.date.split('/').map(Number);
 
-            const dateA = new Date(yearA, monthA - 1, dayA); // month is 0-indexed
+            const dateA = new Date(yearA, monthA - 1, dayA);
             const dateB = new Date(yearB, monthB - 1, dayB);
 
-            return dateA - dateB; // Sort in ascending order
+            return dateA - dateB;
         });
     };
 

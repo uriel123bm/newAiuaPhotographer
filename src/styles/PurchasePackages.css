@@ -6,7 +6,7 @@
     background-color: #f4f4f4;
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    min-height: 100vh; /* Ensures full height */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +14,7 @@
 
 .purchase-title {
     font-size: 2.5rem;
-    color: #003366; /* Dark Blue */
+    color: #003366;
     margin-bottom: 30px;
 }
 
@@ -30,7 +30,7 @@
     gap: 20px;
 }
 
-.back-button, .home-button {
+.back-button{
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -41,19 +41,11 @@
 }
 
 .back-button {
-    background-color: #003366; /* Dark Blue */
+    background-color: #003366;
     color: #fff;
 }
 
 .back-button:hover {
-    background-color: #002244; /* Darker Blue on hover */
+    background-color: #002244;
 }
 
-.home-button {
-    background-color: #007BFF; /* Blue */
-    color: #fff;
-}
-
-.home-button:hover {
-    background-color: #0056b3; /* Darker Blue on hover */
-}

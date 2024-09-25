@@ -1,6 +1,6 @@
 /* Navbar.css */
 .navbar {
-    background-color: #003366; /* Dark Blue */
+    background-color: #003366;
     padding: 20px;
     position: fixed;
     width: 100%;
@@ -38,5 +38,10 @@
     position: fixed;
     right: 0;
     top: 0;
+}
+
+.logo-bar{
+    position: absolute;
+    left: 0;
 }
 

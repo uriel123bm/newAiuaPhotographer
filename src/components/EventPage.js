@@ -10,7 +10,7 @@ function EventPage({ event }) {
     const [qrImage, setQrImage] = useState(null);
     const [editMode, setEditMode] = useState(false);
 
-    // הוספת דף נוכחי והגדרת כמות תמונות לדף
+
     const [currentPage, setCurrentPage] = useState(1);
     const imagesPerPage = 25;
 
@@ -20,7 +20,7 @@ function EventPage({ event }) {
         setMessage("");
         setImages([]);
         setPreviewImages([]);
-        setCurrentPage(1); // מאפסים את הדף הנוכחי בעת שינוי אירוע
+        setCurrentPage(1);
     }, [event]);
 
     const handleFileSelect = (e) => {
@@ -29,7 +29,7 @@ function EventPage({ event }) {
         const imagePreviews = selectedFiles.map((file) => URL.createObjectURL(file));
         setPreviewImages(imagePreviews);
         setUploadProgress(0);
-        setCurrentPage(1); // מאפסים את הדף הנוכחי בעת בחירת תמונות חדשות
+        setCurrentPage(1);
     };
 
     const handleSubmit = () => {
@@ -50,16 +50,16 @@ function EventPage({ event }) {
             .then(response => {
                 if (response.data.status === "success") {
                     setImages([]);
-                    setMessage("התמונות עודכנו בהצלחה!");
+                    setMessage("The upload was successful!");
                     setUploadProgress(0);
                 } else {
-                    setMessage("לא הצלחנו להעלות את התמונות. אנא נסה שנית!");
+                    setMessage("We could not upload the photos. Please try again!");
                 }
                 setTimeout(() => setMessage(""), 2000);
             })
             .catch(error => {
                 console.error("There was an error uploading the images!", error);
-                setMessage("אירעה שגיאה בהעלאה. אנא נסה שנית.");
+                setMessage("There was an error uploading the images!");
             });
     };
 
@@ -93,7 +93,7 @@ function EventPage({ event }) {
         setPreviewImages(newPreviews);
     };
 
-    // חישוב התצוגה של הדף הנוכחי
+
     const indexOfLastImage = currentPage * imagesPerPage;
     const indexOfFirstImage = indexOfLastImage - imagesPerPage;
     const currentImages = previewImages.slice(indexOfFirstImage, indexOfLastImage);

@@ -68,9 +68,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
 
+/* my events css */
 
 
 .events-container {
@@ -79,11 +81,32 @@
     margin-left: 1%;
     width: 40%;
     max-height: 60vh;
-    overflow-y: auto; /* גלילה אנכית אם התוכן עולה על גובה התיבה */
+    overflow-y: auto;
     border: 3px solid #003366;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.events-container::-webkit-scrollbar {
+    width: 10px;
+
+}
+
+
+.events-container::-webkit-scrollbar-track {
+    background: #fffdfd;
+    border-radius: 10px;
+}
+
+.events-container::-webkit-scrollbar-thumb {
+    background: #003366;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.events-container::-webkit-scrollbar-thumb:hover {
+    background: #164870;
 }
 
 .event-container-title{
@@ -95,10 +118,8 @@
 }
 
 .event-list{
-
     display: flex;
     flex-direction: column;
-
     padding: 20px;
     border: 1px solid #003366;
     border-radius: 10px;
@@ -107,18 +128,18 @@
 
 .event-list-header {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* שלושה עמודות שוות */
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 10px;
     background-color: #003366;
     color: #fff;
     font-weight: bold;
     text-align: center;
-    border-radius: 8px 8px 0 0; /* קצוות עליונים מעוגלים */
+    border-radius: 8px 8px 0 0;
 }
 
 .event-item {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; /* שלוש עמודות שוות */
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 10px;
     border-bottom: 1px solid #ddd;
     border-radius: 10px;
@@ -134,9 +155,11 @@
 }
 
 .event-item.selected {
-    background-color: #93a9c2; /* צבע שונה לאירוע הנבחר */
-    color: #fff; /* טקסט לבן */
+    background-color: #93a9c2;
+    color: #fff;
 }
+
+
 
 
 #edit-user-button{

@@ -23,9 +23,9 @@ function CreateEvent({setShowModal, setEvents}){
         formData.append('date', newEvent.date);
 
         axios.post('http://localhost:8000/create-event/', formData, {
-            withCredentials: true,  // לוודא שהעוגיות מועברות (כמו טוקן הזיהוי)
+            withCredentials: true,
             headers: {
-                'Content-Type': 'multipart/form-data',  // כי אנחנו שולחים נתונים כ-FormData
+                'Content-Type': 'multipart/form-data',
             }
         })
             .then(response => {
@@ -41,7 +41,6 @@ function CreateEvent({setShowModal, setEvents}){
     };
 
     const handleShowModal = () => {
-        debugger
         setShowModal(false)
     };
 

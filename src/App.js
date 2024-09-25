@@ -11,6 +11,7 @@ import EventPage from './components/EventPage';
 import Navbar from "./components/Navbar";
 import Cookies from 'js-cookie';
 import axios from "axios";
+import NotFoundPage from "./components/NotFoundPage";
 
 
 function App() {
@@ -46,9 +47,8 @@ function App() {
         <Router>
             <Navbar logged={isLoggedIn} logout={logOut} />
             <Routes>
-                <Route path="/*" element={<Home />} />
+                <Route path="*" element={<NotFoundPage/>} />
                 <Route path="/" element={<Home />} />
-
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/packages" element={<Packages />} />
                 <Route path="/purchase-packages" element={<PurchasePackages />} />

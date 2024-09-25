@@ -25,14 +25,30 @@ const carouselItems = [
         name: '8200 Alumni Event',
         testimonial: 'The 8200 alumni event was perfectly captured with great attention to detail. The team did a fantastic job and everyone was very pleased with the results.',
     },
+    {
+        id: 5,
+        name: 'Emily & Jonathan Smith',
+        testimonial: 'We couldn’t have asked for better photos of our engagement. Every shot was artistic and perfectly timed. A wonderful experience!',
+    },
+    {
+        id: 6,
+        name: 'Lea & Tom Friedman',
+        testimonial: 'The family photoshoot was so much fun! The pictures turned out amazing, and the photographer made everyone feel comfortable and at ease.',
+    },
+    {
+        id: 7,
+        name: 'Startup Tech Event',
+        testimonial: 'Our tech event was captured perfectly. The team understood exactly what we needed and delivered outstanding results!',
+    },
 ];
+
 
 const Carousel = () => {
     const settings = {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 1,
+        slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3000,

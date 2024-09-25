@@ -1,6 +1,6 @@
 /* AboutUs.css */
 .about-us-container {
-    padding-top: 60px; /* Adjust according to the Navbar height */
+    padding-top: 60px;
 
     text-align: center;
 
@@ -9,7 +9,7 @@
 .about-us-title {
     margin-top: 5%;
     font-size: 2rem;
-    color: #003366; /* Dark Blue */
+    color: #003366;
 }
 
 .about-us-text {
@@ -20,7 +20,7 @@
 }
 
 .back-button {
-    background-color: #003366; /* Dark Blue */
+    background-color: #003366;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -30,5 +30,5 @@
 }
 
 .back-button:hover {
-    background-color: #002244; /* Darker shade of Blue */
+    background-color: #002244;
 }

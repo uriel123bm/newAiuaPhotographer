@@ -1,23 +1,21 @@
-.register-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f2f5;
-}
+
 .Link-Style{
+    position: absolute;
     background-color:#003366;
     color: white;
-    width:85px;
-    margin-left:160px;
     border-radius: 8px;
     padding: 1px;
-    font-size: small;
-    margin-top: 5px;
+    font-size: 1rem;
+    left: 50%;
     margin-bottom: 5px;
+    width: 25vh;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .App-container {
+    position: relative;
     max-width: 400px;
+    height: 45vh;
     margin: 0 auto;
     padding: 20px;
     background-color: #f0f4f8;

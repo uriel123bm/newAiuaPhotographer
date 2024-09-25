@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/Register.css';
 import axios from "axios";
 
-const Register = ({ closeModal, nav}) => {
+const Register = ({ closeModal}) => {
     const [fullName, setFullName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,11 +17,11 @@ const Register = ({ closeModal, nav}) => {
     }, [fullName, email, password, confirmPassword, phoneNumber]);
 
     const validateForm = () => {
-        const fullNameValid = /^[A-Za-zא-ת\s]+$/.test(fullName); // שם יכול להכיל אותיות באנגלית, עברית ורווחים
-        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); // אימייל תקין
-        const passwordValid = /^[A-Z][A-Za-z0-9]{5,9}$/.test(password); // סיסמה מתחילה באות גדולה, מכילה לפחות ספרה אחת, ואורכה בין 6 ל-10 תווים
+        const fullNameValid = /^[A-Za-zא-ת\s]+$/.test(fullName);
+        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        const passwordValid = /^[A-Z][A-Za-z0-9]{5,9}$/.test(password);
         const passwordsMatch = password === confirmPassword;
-        const phoneValid = /^05[0-9]{8}$/.test(phoneNumber); // בדיוק 7 ספרות לטלפון
+        const phoneValid = /^05[0-9]{8}$/.test(phoneNumber);
         setIsFormValid(fullNameValid && emailValid && passwordValid && passwordsMatch && phoneValid);
     };
 
@@ -45,7 +45,6 @@ const Register = ({ closeModal, nav}) => {
 
     const handlePhoneNumberChange = (e) => {
         const value = e.target.value;
-        // לאפשר הזנת מספרים בלבד ולוודא שהמספר הוא עד 7 ספרות
         if (/^[0-9]*$/.test(value) && value.length <= 10) {
             setPhoneNumber(value);
         }
@@ -60,24 +59,19 @@ const Register = ({ closeModal, nav}) => {
             phone: phoneNumber
         })
             .then(response => {
-                // במידה והבקשה הצליחה
                 setSuccessMessage('Registration successful! Sign in Now!');
-                setError('');  // לנקות הודעות שגיאה קודמות
+                setError('');
                 setTimeout(()=>{
                     closeModal(false)
                 },2000)
 
             })
             .catch(error => {
-                // טיפול בשגיאות
                 if (error.response) {
-                    // שגיאה מהשרת
                     setError(error.response.data.error || 'An error occurred.');  // הגדרת הודעת שגיאה לפי הנתונים מהשרת
                 } else if (error.request) {
-                    // שגיאה בקבלת התגובה מהשרת
                     setError('No response from server.');
                 } else {
-                    // שגיאה במהלך יצירת הבקשה
                     setError(`Error: ${error.message}`);
                 }
                 setSuccessMessage('');  // לנקות הודעות הצלחה קודמות
@@ -86,55 +80,52 @@ const Register = ({ closeModal, nav}) => {
 
     return (
         <div className="App-container">
-            <h2>הרשמה</h2>
+            <h2>SIGN UP</h2>
             <form onSubmit={handleSubmit}>
                 <div className={"input-group"}>
                     <input
-                        placeholder={"שם מלא"}
+                        placeholder={"Full Name"}
                         type="text"
                         value={fullName}
                         onChange={handleFullNameChange}
-                        title="השם יכול להכיל אותיות באנגלית, עברית ורווחים בלבד." // Tooltip
+                        title="Must contain English letters, Hebrew and spaces only."
                     />
                     <input
-                        placeholder={"אימייל"}
+                        placeholder={"Email"}
                         type="email"
                         value={email}
                         onChange={handleEmailChange}
-                        title="הכנס אימייל תקין (למשל, example@example.com)." // Tooltip
+                        title="example@example.com"
                     />
                     <input
-                        placeholder={"סיסמה"}
+                        placeholder={"Password"}
                         type="password"
                         value={password}
                         onChange={handlePasswordChange}
-                        title="הסיסמה צריכה להתחיל באות גדולה, להכיל לפחות ספרה אחת, ואורכה בין 6 ל-10 תווים." // Tooltip
+                        title="Must start with a capital letter, contain at least one digit, and be between 6 and 10 characters long." // Tooltip
                     />
                     <input
-                        placeholder={"אישור סיסמה"}
+                        placeholder={"Confirm Password"}
                         type="password"
                         value={confirmPassword}
                         onChange={handleConfirmPasswordChange}
-                        title="וודא שהסיסמה תואמת לזו שהכנסת קודם." // Tooltip
+                        title="Make sure the password matches the one you entered before."
                     />
                         <input
-                            placeholder={"הכנס מספר טלפון"}
+                            placeholder={"Phone"}
                             type="text"
                             value={phoneNumber}
                             onChange={handlePhoneNumberChange}
-                            title="הכנס מספר טלפון בן 7 ספרות, ללא רווחים או תווים נוספים." // Tooltip
+                            title="Enter a 10-digit phone number, without spaces or extra characters."
                             required
                         />
                 </div>
-
-                {/* קידומת ומספר טלפון */}
-
-                <button type="submit" disabled={!isFormValid}>הרשם</button>
+                <button type="submit" disabled={!isFormValid}>SIGN UP</button>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 {successMessage && <p style={{ color: 'blue' }}>{successMessage}</p>}
             </form>
 
-            <p className="Link-Style">נרשמת כבר? <span onClick={closeModal} style={{ cursor: 'pointer', textDecoration: 'underline' }}>התחבר</span></p>
+            <p className="Link-Style">Already signed? <span onClick={closeModal} style={{ cursor: 'pointer', textDecoration: 'underline' }}>Login</span></p>
         </div>
     );
 };

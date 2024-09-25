@@ -1,4 +1,4 @@
-/* Packages.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .packages-container {
@@ -6,7 +6,7 @@
     background-color: #f4f4f4;
     font-family: 'Roboto', sans-serif;
     text-align: center;
-    min-height: 100vh; /* Ensures full height */
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,7 +14,7 @@
 
 .packages-title {
     font-size: 2.5rem;
-    color: #003366; /* Dark Blue */
+    color: #003366;
     margin-bottom: 30px;
 }
 
@@ -26,11 +26,13 @@
 }
 
 .package-card {
+    position: relative;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 300px;
+    height: 300px;
     text-align: center;
     transition: transform 0.3s ease;
 }
@@ -41,14 +43,14 @@
 
 .package-title {
     font-size: 1.8rem;
-    color: #003366; /* Dark Blue */
+    color: #003366;
     margin-bottom: 10px;
 }
 
 .package-details {
     list-style-type: none;
     padding: 0;
-    margin: 0;
+
     font-size: 1rem;
     color: #666;
     margin-bottom: 20px;
@@ -60,40 +62,27 @@
 
 .package-price {
     font-size: 1.5rem;
-    color: #003366; /* Dark Blue */
+    color: #003366;
     font-weight: bold;
     margin-bottom: 20px;
 }
 
 .purchase-button {
     padding: 10px 20px;
-    background-color: #003366; /* Dark Blue */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Roboto', sans-serif; /* Modern and readable font */
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.purchase-button:hover {
-    background-color: #002244; /* Darker Blue on hover */
-}
-
-.home-button {
-    padding: 10px 20px;
-    background-color: #007BFF; /* Blue */
+    background-color: #003366;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-family: 'Roboto', sans-serif;
     font-size: 1rem;
-    margin-top: 20px;
     transition: background-color 0.3s ease;
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-.home-button:hover {
-    background-color: #0056b3; /* Darker Blue on hover */
+.purchase-button:hover {
+    background-color: #002244;
 }

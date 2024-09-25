@@ -1,7 +1,6 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Import Link here
+import { useNavigate } from 'react-router-dom';
 import '../styles/AboutUs.css';
-import Navbar from "./Navbar";
 import '../App.css'
 
 
@@ -14,7 +13,6 @@ const AboutUs = () => {
 
     return (
         <div className="main-container">
-            {/* מייבא מהקופוננטה*/}
         <div className={"about-us-container"}>
             <h1 className="about-us-title">About Us</h1>
             <p className="about-us-text">

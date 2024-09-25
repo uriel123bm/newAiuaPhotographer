@@ -1,8 +1,8 @@
-// Packages.js
+
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Import Link here
+import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Packages.css';
-import Navbar from "./Navbar";
+
 import '../App.css'
 
 const PackageCard = ({ title, details, price }) => {
@@ -37,7 +37,6 @@ const Packages = () => {
 
     return (
         <div className={"main-container"}>
-            {/* מייבא מהקופוננטה*/}
             <div className={"packages-container"}>
                 <h1 className="packages-title">Our Packages</h1>
                 <div className="packages-grid">
@@ -69,7 +68,7 @@ const Packages = () => {
                         price="500"
                     />
                 </div>
-                <button className="home-button" onClick={handleHomeClick}>
+                <button className="back-button" onClick={handleHomeClick}>
                     Back to Home
                 </button>
             </div>
